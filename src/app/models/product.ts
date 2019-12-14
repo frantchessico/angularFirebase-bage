@@ -1,0 +1,7 @@
+export interface Product {
+    id?: string;
+    title: string;
+    price: number;
+    stock: number;
+    active: boolean;
+}

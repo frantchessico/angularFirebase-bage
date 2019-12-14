@@ -1,0 +1,57 @@
+<!-- (.row>(.col-md-6>h1{Add new Product})+.col-md-6.text-right>a.btn.btn-link>i.fa.fa-arrow-left)+(.row>.col-md-8.mx-auto) -->
+<div class="row">
+    <div class="col-md-6">
+      <h1>Edit Product</h1>
+    </div>
+    <div class="col-md-6 text-right">
+      <a routerLink="/products" class="btn btn-link">
+        <i class="fa fa-arrow-left"></i> Back to list
+      </a>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-md-8 mx-auto">
+      <div class="form-group">
+        <label for="Title">Title</label>
+        <input [(ngModel)]="myProduct.title" id="Title" placeholder="New Title" type="text" class="form-control">
+      </div>
+  
+      <div class="form-group">
+        <label for="Price">Price</label>
+        <input [(ngModel)]="myProduct.price" id="Price" placeholder="new Price" type="text" class="form-control">
+      </div>
+  
+      <div class="form-group">
+        <label for="Stock">Stock</label>
+        <input [(ngModel)]="myProduct.stock" id="Stock" placeholder="New Stock" type="text" class="form-control">
+      </div>
+
+      <div class="form-group">
+          <label for="category">Choose on Category</label>
+          <select [(ngModel)]="myProduct.category" class="form-control" name="category" id="category">
+              <option 
+                [ngValue]="category" 
+                *ngFor="let category of categories" 
+                [selected]="category.id == 2 ? true: false"
+              >
+                {{ category.label }}
+              </option>
+            </select>
+        </div>
+    
+  
+      <div class="form-check my-4">
+        <label for="Active" class="form-check-label">
+          <input [(ngModel)]="myProduct.active" type="checkbox" class="form-check-input" name="" id="Active" value="checkedValue" checked>
+          Active
+        </label>
+      </div>
+
+      {{ myProduct | json }}
+  
+      <button class="btn btn-block btn-warning" (click)="updateProduct()">
+        <i class="fa fa-refresh"></i> Update Product
+      </button>
+    </div>
+  </div>
